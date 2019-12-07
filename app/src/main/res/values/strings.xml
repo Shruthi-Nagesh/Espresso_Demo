@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Espresso_Demo</string>
+    <string name="welcome_text"><u>Welcome, Click here to  webview</u></string>
+</resources>
