@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,8 @@ public class ShowListActivity extends Activity {
     private List<Item> itemList = new ArrayList<>();
     private RecyclerView recyclerView;
     private ItemAdapter mAdapter;
+    private Toolbar mToolbar ;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class ShowListActivity extends Activity {
 
             recyclerView =  findViewById(R.id.recycler_view);
 
+            mToolbar =  findViewById(R.id.toolbar);
+            mToolbar.setTitle("Product List");
             mAdapter = new ItemAdapter(itemList);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(mLayoutManager);

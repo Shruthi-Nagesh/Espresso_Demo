@@ -1,7 +1,6 @@
 package com.example.espresso_demo;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 
 public class ListDetailsPage extends Activity implements View.OnClickListener {
 
@@ -18,6 +18,8 @@ public class ListDetailsPage extends Activity implements View.OnClickListener {
     private Button mMinusBtn;
     private Button mAddtoCart;
     private String mData;
+    private static int count = 1;
+    private Toolbar mToolbar ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +30,10 @@ public class ListDetailsPage extends Activity implements View.OnClickListener {
         mMinusBtn = findViewById(R.id. minus_btn);
         mAddtoCart = findViewById(R.id.add_to_cart_btn);
 
+        mToolbar =  findViewById(R.id.toolbar);
+        mToolbar.setTitle("Product Details");
+       // setSupportActionBar(mTopToolbar);
+
         mAddBtn.setOnClickListener(this);
         mMinusBtn.setOnClickListener(this);
         mAddtoCart.setOnClickListener(this);
@@ -36,12 +42,13 @@ public class ListDetailsPage extends Activity implements View.OnClickListener {
         String data = bundle.getString("data");
         mData = data;
         mSelectedMovie.setText("You have selected"+" "+data);
+        mQuantity.setText("Quantity 1");
 
     }
 
     @Override
     public void onClick(View v) {
-        int count = 1;
+
         switch (v.getId()) {
             case R.id.add_btn:
                 count = count + 1;
