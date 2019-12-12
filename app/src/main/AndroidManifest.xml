@@ -21,6 +21,7 @@
         <activity android:name=".WebviewActivity"/>
         <activity android:name=".ShowListActivity"/>
         <activity android:name=".ListDetailsPage"/>
+        <activity android:name=".CartActivity"/>
     </application>
 
 </manifest>

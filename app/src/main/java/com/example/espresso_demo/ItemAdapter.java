@@ -9,25 +9,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
 
-    private List<Movie> moviesList;
+    private List<Item> moviesList;
     private RecyclerViewClickInterface mListener;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
+        public TextView mTitle, mDescription, mQuantity;
 
         public MyViewHolder(View view) {
             super(view);
 
-            title = (TextView) view.findViewById(R.id.title);
-            genre = (TextView) view.findViewById(R.id.genre);
-            year = (TextView) view.findViewById(R.id.year);
+            mTitle = (TextView) view.findViewById(R.id.title);
+            mDescription = (TextView) view.findViewById(R.id.description);
+            mQuantity = (TextView) view.findViewById(R.id.quantity);
         }
     }
 
 
-    public MoviesAdapter(List<Movie> moviesList) {
+    public ItemAdapter(List<Item> moviesList) {
         this.moviesList = moviesList;
     }
 
@@ -45,15 +45,15 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        final Movie movie = moviesList.get(position);
-        holder.title.setText(movie.getTitle());
-        holder.genre.setText(movie.getGenre());
-        holder.year.setText(movie.getYear());
+        final Item item = moviesList.get(position);
+        holder.mTitle.setText(item.getTitle());
+        holder.mDescription.setText(item.getDesc());
+        holder.mQuantity.setText(item.getQuantity());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.getItemPosition(movie.getTitle());
+                mListener.getItemPosition(item.getTitle());
             }
         });
     }

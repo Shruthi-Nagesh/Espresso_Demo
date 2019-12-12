@@ -3,8 +3,6 @@ package com.example.espresso_demo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -16,9 +14,9 @@ import java.util.List;
 
 public class ShowListActivity extends Activity {
 
-    private List<Movie> movieList = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
     private RecyclerView recyclerView;
-    private MoviesAdapter mAdapter;
+    private ItemAdapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,7 +25,7 @@ public class ShowListActivity extends Activity {
 
             recyclerView =  findViewById(R.id.recycler_view);
 
-            mAdapter = new MoviesAdapter(movieList);
+            mAdapter = new ItemAdapter(itemList);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -40,57 +38,26 @@ public class ShowListActivity extends Activity {
 
 
         private void prepareMovieData () {
-            Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
-            movieList.add(movie);
+            Item item = new Item("Maybelline New York", "Maybelline New York color show Bright Matt",
+                    "1");
+            itemList.add(item);
 
-            movie = new Movie("Inside Out", "Animation, Kids & Family", "2015");
-            movieList.add(movie);
+            item = new Item(" Maybelline New York", "Maybelline New York Nail Paint", "1");
+            itemList.add(item);
 
-            movie = new Movie("Star Wars: Episode VII - The Force Awakens", "Action", "2015");
-            movieList.add(movie);
+            item = new Item("Nick K Perfect", "Nick K Perfect eye shadow", "1");
+            itemList.add(item);
 
-            movie = new Movie("Shaun the Sheep", "Animation", "2015");
-            movieList.add(movie);
+            item = new Item("Nykaa", "Nykaa collosal", "1");
+            itemList.add(item);
 
-            movie = new Movie("The Martian", "Science Fiction & Fantasy", "2015");
-            movieList.add(movie);
+            item = new Item("Mac", "Mac Rubby", "1");
+            itemList.add(item);
 
-            movie = new Movie("Mission: Impossible Rogue Nation", "Action", "2015");
-            movieList.add(movie);
-
-            movie = new Movie("Up", "Animation", "2009");
-            movieList.add(movie);
-
-            movie = new Movie("Star Trek", "Science Fiction", "2009");
-            movieList.add(movie);
-
-            movie = new Movie("The LEGO Movie", "Animation", "2014");
-            movieList.add(movie);
-
-            movie = new Movie("Iron Man", "Action & Adventure", "2008");
-            movieList.add(movie);
-
-            movie = new Movie("Aliens", "Science Fiction", "1986");
-            movieList.add(movie);
-
-            movie = new Movie("Chicken Run", "Animation", "2000");
-            movieList.add(movie);
-
-            movie = new Movie("Back to the Future", "Science Fiction", "1985");
-            movieList.add(movie);
-
-            movie = new Movie("Raiders of the Lost Ark", "Action & Adventure", "1981");
-            movieList.add(movie);
-
-            movie = new Movie("Goldfinger", "Action & Adventure", "1965");
-            movieList.add(movie);
-
-            movie = new Movie("Guardians of the Galaxy", "Science Fiction & Fantasy", "2014");
-            movieList.add(movie);
 
             mAdapter.notifyDataSetChanged();
 
-            mAdapter.setOnItemClickListner(new MoviesAdapter.RecyclerViewClickInterface() {
+            mAdapter.setOnItemClickListner(new ItemAdapter.RecyclerViewClickInterface() {
                 @Override
                 public void getItemPosition(String str) {
                     Intent detailIntent = new Intent(getApplicationContext(), ListDetailsPage.class);
